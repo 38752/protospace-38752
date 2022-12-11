@@ -41,14 +41,10 @@ class PrototypesController < ApplicationController
   end
 
   def destroy # DELETE
-    if set_prototype(params[:id])
-      if @prototype.user.id == current_user.id
-        @prototype.destroy
-        redirect_to action: :index
-      else
-        redirect_to action: :show
-      end
+    if set_prototype(params[:id]) && @prototype.user.id == current_user.id
+      @prototype.destroy
     end
+    redirect_to action: :index
   end
 
 
@@ -63,9 +59,7 @@ class PrototypesController < ApplicationController
       @comments = @prototype.comments.includes(:user).order("id DESC")
       return true
     else
-      render '/notexist'
       return false
-      # redirect_to action: :notexist
     end
   end
 end

@@ -10,8 +10,6 @@ class UsersController < ApplicationController
       @prototypes = @user.prototypes.order("id DESC")
       return true
     else
-      render '/notexist'
-      # redirect_to action: :notexist
       return false
     end
   end

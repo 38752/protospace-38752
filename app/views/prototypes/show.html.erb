@@ -6,12 +6,12 @@
       </p>
       <%= link_to "by #{@prototype.user.name}", user_path(@prototype.user), class: :prototype__user %>
       <% if user_signed_in? && @prototype.user.id == current_user.id %>
-      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+        <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_prototype_path(@prototype), class: :prototype__btn %>
           <%= link_to "削除する", prototype_path(@prototype), method: :delete, class: :prototype__btn %>
         </div>
-      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+        <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <% end %>
       <div class="prototype__image">
         <%= image_tag @prototype.image %>
@@ -47,10 +47,10 @@
         <ul class="comments_lists">
           <% @comments.each do |comment| %>
             <%# 投稿に紐づくコメントを一覧する処理を記述する %>
-              <li class="comments_list">
-                <%= comment.content %>
-                <%= link_to comment.user.name , user_path(comment.user), class: :comment_user %>
-              </li>
+            <li class="comments_list">
+              <%= comment.content %>
+              <%= link_to comment.user.name , user_path(comment.user), class: :comment_user %>
+            </li>
             <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
           <% end %>
         </ul>
